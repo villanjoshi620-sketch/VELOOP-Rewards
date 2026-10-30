@@ -1,0 +1,194 @@
+.rulesContainer {
+  position: relative;
+  min-width: 0;
+  overflow: hidden;
+  padding: 1.15rem 1.25rem;
+  border: 1px solid rgba(168, 85, 247, 0.22);
+  border-radius: 1.1rem;
+  background:
+    radial-gradient(ellipse 70% 50% at 50% 0%, rgba(168, 85, 247, 0.12), transparent 70%),
+    linear-gradient(160deg, rgba(22, 16, 46, 0.88), rgba(13, 9, 28, 0.94));
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  box-shadow: 0 10px 30px rgba(5, 3, 16, 0.35), inset 0 1px 1px rgba(255, 255, 255, 0.06);
+}
+
+/* Top accent illumination */
+.rulesContainer::before {
+  position: absolute;
+  top: 0;
+  left: 10%;
+  right: 10%;
+  height: 2px;
+  content: '';
+  background: linear-gradient(90deg, transparent, #c084fc, transparent);
+  opacity: 0.7;
+}
+
+.rulesHeader {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.35rem;
+  margin-bottom: 0.85rem;
+}
+
+.rulesTitle {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin: 0;
+  color: #fff;
+  font-size: 0.92rem;
+  font-weight: 800;
+  letter-spacing: -0.01em;
+}
+
+.rulesTitle svg {
+  color: #c084fc;
+  filter: drop-shadow(0 0 6px rgba(168, 85, 247, 0.5));
+}
+
+.viewDetailsBtn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3rem;
+  padding: 0.3rem 0.55rem;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.04);
+  color: #d8b4fe;
+  font-size: 0.64rem;
+  font-weight: 750;
+  white-space: nowrap;
+  cursor: pointer;
+  transition: all 200ms ease;
+}
+
+.viewDetailsBtn svg {
+  transition: transform 200ms ease;
+}
+
+.viewDetailsBtn:hover {
+  color: #fff;
+  border-color: rgba(192, 132, 252, 0.4);
+  background: rgba(168, 85, 247, 0.16);
+  transform: translateY(-1px);
+}
+
+.viewDetailsBtn:hover svg {
+  transform: translateX(2px);
+}
+
+.rulesList {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+}
+
+.ruleItem {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.55rem;
+  max-width: 83%;
+  padding: 0.45rem 0.55rem;
+  border-radius: 0.65rem;
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid transparent;
+  color: #b5b1c5;
+  font-size: 0.65rem;
+  line-height: 1.45;
+  transition:
+    transform 200ms cubic-bezier(0.16, 1, 0.3, 1),
+    background 200ms ease,
+    border-color 200ms ease,
+    color 200ms ease;
+}
+
+.ruleItem:hover {
+  transform: translateX(4px);
+  background: rgba(255, 255, 255, 0.05);
+  border-color: rgba(168, 85, 247, 0.2);
+  color: #ffffff;
+}
+
+.ruleBullet {
+  display: grid;
+  flex: none;
+  width: 1.15rem;
+  height: 1.15rem;
+  place-items: center;
+  margin-top: 0.05rem;
+  border: 1px solid rgba(192, 132, 252, 0.35);
+  border-radius: 50%;
+  background: rgba(168, 85, 247, 0.16);
+  box-shadow: 0 0 8px rgba(168, 85, 247, 0.2);
+  transition: transform 200ms ease, box-shadow 200ms ease;
+}
+
+.ruleItem:hover .ruleBullet {
+  transform: scale(1.15);
+  box-shadow: 0 0 12px rgba(168, 85, 247, 0.5);
+}
+
+.ruleBullet::after {
+  width: 0.28rem;
+  height: 0.28rem;
+  border-radius: 50%;
+  background: #c084fc;
+  content: "";
+}
+
+.rulesArtwork {
+  position: absolute;
+  right: 0.9rem;
+  bottom: 1.2rem;
+  width: 5.6rem;
+  height: 5.6rem;
+  border-radius: 0.75rem;
+  object-fit: cover;
+  opacity: 0.78;
+  mask-image: linear-gradient(135deg, transparent 0%, #000 35%, #000 100%);
+  filter: drop-shadow(0 0 16px rgba(147, 51, 234, 0.4));
+  pointer-events: none;
+  animation: shieldFloat 5s ease-in-out infinite;
+}
+
+@keyframes shieldFloat {
+  0%, 100% {
+    transform: translateY(0px) rotate(0deg);
+  }
+  50% {
+    transform: translateY(-6px) rotate(1.5deg);
+  }
+}
+
+.viewDetailsBtn:focus-visible {
+  outline: 2px solid #d8bb7a;
+  outline-offset: 2px;
+  border-radius: 3px;
+}
+
+@media (max-width: 1050px) {
+  .rulesArtwork {
+    width: 4.6rem;
+    height: 4.6rem;
+    right: 0.6rem;
+  }
+  .ruleItem { max-width: 90%; }
+}
+
+@media (max-width: 600px) {
+  .ruleItem { max-width: 82%; }
+  .rulesArtwork { width: 4.8rem; height: 4.8rem; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .rulesArtwork {
+    animation: none;
+  }
+}

@@ -1,0 +1,66 @@
+.errorContainer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  width: 100%;
+  margin: 0 0 1.5rem;
+  padding: 3rem 1.5rem;
+  border: 1px solid rgba(225, 143, 143, 0.2);
+  border-radius: 1.2rem;
+  background: linear-gradient(145deg, rgba(44, 34, 49, 0.82), rgba(29, 30, 47, 0.88));
+  text-align: center;
+}
+
+.errorIconCircle {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 3.7rem;
+  height: 3.7rem;
+  margin-bottom: 1rem;
+  border: 1px solid rgba(225, 143, 143, 0.3);
+  border-radius: 50%;
+  background: rgba(151, 68, 78, 0.16);
+  color: #e6aaaa;
+}
+
+.errorTitle {
+  margin: 0 0 0.45rem;
+  color: #fff;
+  font-size: 1.15rem;
+  font-weight: 700;
+}
+
+.errorText {
+  max-width: 400px;
+  margin: 0 0 1.2rem;
+  color: #b9b5c4;
+  font-size: 0.85rem;
+  line-height: 1.5;
+}
+
+.retryBtn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.65rem 1rem;
+  border: 1px solid rgba(225, 143, 143, 0.28);
+  border-radius: 0.7rem;
+  background: rgba(151, 68, 78, 0.18);
+  color: #f0c5c5;
+  font-size: 0.8rem;
+  font-weight: 650;
+  cursor: pointer;
+  transition: background 160ms ease, border-color 160ms ease;
+}
+
+.retryBtn:hover {
+  border-color: rgba(225, 143, 143, 0.52);
+  background: rgba(151, 68, 78, 0.28);
+}
+
+.retryBtn:focus-visible {
+  outline: 2px solid #e6aaaa;
+  outline-offset: 3px;
+}

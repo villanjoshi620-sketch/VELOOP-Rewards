@@ -1,0 +1,266 @@
+.historySection {
+  position: relative;
+  min-width: 0;
+  padding: 1.15rem 1.25rem;
+  border: 1px solid rgba(168, 85, 247, 0.22);
+  border-radius: 1.1rem;
+  background:
+    radial-gradient(ellipse 70% 50% at 50% 0%, rgba(168, 85, 247, 0.12), transparent 70%),
+    linear-gradient(160deg, rgba(22, 16, 46, 0.88), rgba(13, 9, 28, 0.94));
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  box-shadow: 0 10px 30px rgba(5, 3, 16, 0.35), inset 0 1px 1px rgba(255, 255, 255, 0.06);
+  overflow: hidden;
+}
+
+/* Top accent illumination */
+.historySection::before {
+  position: absolute;
+  top: 0;
+  left: 10%;
+  right: 10%;
+  height: 2px;
+  content: '';
+  background: linear-gradient(90deg, transparent, #c084fc, transparent);
+  opacity: 0.7;
+}
+
+.historyHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.4rem;
+  margin-bottom: 0.85rem;
+}
+
+.headerTitle {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin: 0;
+  color: #f8fafc;
+  font-size: 0.92rem;
+  font-weight: 800;
+  letter-spacing: -0.01em;
+}
+
+.headerTitle svg {
+  color: #c084fc;
+  filter: drop-shadow(0 0 6px rgba(168, 85, 247, 0.5));
+}
+
+.viewAllBtn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3rem;
+  padding: 0.3rem 0.55rem;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.04);
+  color: #d8b4fe;
+  font-size: 0.64rem;
+  font-weight: 750;
+  white-space: nowrap;
+  cursor: pointer;
+  transition: all 200ms ease;
+}
+
+.viewAllBtn svg {
+  transition: transform 200ms ease;
+}
+
+.viewAllBtn:hover {
+  color: #fff;
+  border-color: rgba(192, 132, 252, 0.4);
+  background: rgba(168, 85, 247, 0.16);
+  transform: translateY(-1px);
+}
+
+.viewAllBtn:hover svg {
+  transform: translateX(2px);
+}
+
+.historyList {
+  display: flex;
+  flex-direction: column;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  gap: 0.35rem;
+}
+
+.historyItem {
+  display: flex;
+  width: 100%;
+  align-items: center;
+  gap: 0.65rem;
+  padding: 0.55rem 0.6rem;
+  border: 1px solid transparent;
+  border-radius: 0.75rem;
+  background: rgba(255, 255, 255, 0.02);
+  color: inherit;
+  text-align: left;
+  cursor: pointer;
+  transition:
+    transform 220ms cubic-bezier(0.16, 1, 0.3, 1),
+    background 220ms ease,
+    border-color 220ms ease,
+    box-shadow 220ms ease;
+}
+
+.historyItem:hover {
+  transform: translateX(4px);
+  background: rgba(255, 255, 255, 0.05);
+  border-color: rgba(168, 85, 247, 0.22);
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.2);
+}
+
+.historyItem:hover .conversionLine {
+  color: #fff;
+}
+
+.historyItem:focus-visible,
+.viewAllBtn:focus-visible {
+  outline: 2px solid #d8bb7a;
+  outline-offset: 2px;
+  border-radius: 4px;
+}
+
+.historyGem {
+  display: grid;
+  flex: none;
+  width: 2rem;
+  height: 2rem;
+  place-items: center;
+  border: 1px solid rgba(168, 85, 247, 0.25);
+  border-radius: 50%;
+  background: rgba(168, 85, 247, 0.14);
+  box-shadow: 0 2px 8px rgba(124, 58, 237, 0.15);
+  transition: transform 220ms ease, box-shadow 220ms ease;
+}
+
+.historyItem:hover .historyGem {
+  transform: scale(1.12);
+  box-shadow: 0 0 12px rgba(168, 85, 247, 0.45);
+}
+
+.gemblue {
+  border-color: rgba(59, 130, 246, 0.28);
+  background: rgba(59, 130, 246, 0.14);
+}
+.historyItem:hover .gemblue {
+  box-shadow: 0 0 12px rgba(59, 130, 246, 0.45);
+}
+
+.gemgreen {
+  border-color: rgba(16, 185, 129, 0.28);
+  background: rgba(16, 185, 129, 0.14);
+}
+.historyItem:hover .gemgreen {
+  box-shadow: 0 0 12px rgba(16, 185, 129, 0.45);
+}
+
+.gemamber {
+  border-color: rgba(245, 158, 11, 0.28);
+  background: rgba(245, 158, 11, 0.14);
+}
+.historyItem:hover .gemamber {
+  box-shadow: 0 0 12px rgba(245, 158, 11, 0.45);
+}
+
+.historyDetails {
+  display: flex;
+  min-width: 0;
+  flex: 1;
+  flex-direction: column;
+  gap: 0.16rem;
+}
+
+.conversionLine {
+  display: flex;
+  align-items: center;
+  gap: 0.3rem;
+  color: #e2d9ef;
+  font-size: 0.68rem;
+  font-weight: 700;
+  white-space: nowrap;
+}
+
+.conversionLine svg {
+  flex: none;
+  color: #a1a1aa;
+  transition: transform 200ms ease, color 200ms ease;
+}
+
+.historyItem:hover .conversionLine svg {
+  color: #c084fc;
+  transform: translateX(2px);
+}
+
+.conversionLine strong {
+  color: #fde047;
+  font-weight: 800;
+  text-shadow: 0 0 10px rgba(250, 204, 21, 0.2);
+}
+
+.dateLine {
+  overflow: hidden;
+  color: #94a3b8;
+  font-size: 0.58rem;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.statusBadge {
+  display: inline-flex;
+  flex: none;
+  align-items: center;
+  gap: 0.25rem;
+  padding: 0.24rem 0.5rem;
+  border-radius: 999px;
+  font-size: 0.56rem;
+  font-weight: 750;
+  letter-spacing: 0.02em;
+}
+
+.statusCompleted {
+  border: 1px solid rgba(34, 197, 94, 0.32);
+  background: rgba(34, 197, 94, 0.12);
+  color: #4ade80;
+  box-shadow: 0 2px 8px rgba(34, 197, 94, 0.15);
+}
+
+.statusFailed {
+  border: 1px solid rgba(239, 68, 68, 0.28);
+  background: rgba(239, 68, 68, 0.1);
+  color: #f87171;
+}
+
+.receiptIcon {
+  display: grid;
+  flex: none;
+  width: 1.35rem;
+  place-items: center;
+  opacity: 0.6;
+  color: #cbd5e1;
+  transition: opacity 200ms ease, transform 200ms ease, color 200ms ease;
+}
+
+.historyItem:hover .receiptIcon {
+  opacity: 1;
+  color: #c084fc;
+  transform: scale(1.15);
+}
+
+.emptyHistory {
+  margin: 0;
+  padding: 1.2rem 0.25rem;
+  color: #94a3b8;
+  font-size: 0.75rem;
+  text-align: center;
+}
+
+@media (max-width: 380px) {
+  .historySection { padding: 0.85rem; }
+  .receiptIcon { display: none; }
+}

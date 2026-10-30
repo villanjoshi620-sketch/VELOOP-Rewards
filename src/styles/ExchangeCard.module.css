@@ -1,0 +1,664 @@
+/* ==========================================================================
+   ExchangeCard.module.css - Enhanced Modern Glassmorphism & Micro-animations
+   ========================================================================== */
+
+.card {
+  position: relative;
+  isolation: isolate;
+  display: flex;
+  min-width: 0;
+  flex-direction: column;
+  overflow: hidden;
+  border-radius: 1.15rem;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  box-shadow: 0 10px 28px rgba(5, 3, 16, 0.42), inset 0 1px 1px rgba(255, 255, 255, 0.06);
+  transition:
+    transform 320ms cubic-bezier(0.16, 1, 0.3, 1),
+    box-shadow 320ms cubic-bezier(0.16, 1, 0.3, 1),
+    border-color 280ms ease,
+    background 320ms ease;
+  animation: cardStaggerEntrance 500ms cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+/* Staggered entrance animation */
+.card:nth-child(1) { animation-delay: 60ms; }
+.card:nth-child(2) { animation-delay: 130ms; }
+.card:nth-child(3) { animation-delay: 200ms; }
+.card:nth-child(4) { animation-delay: 270ms; }
+
+@keyframes cardStaggerEntrance {
+  from {
+    opacity: 0;
+    transform: translateY(22px) scale(0.97);
+    filter: blur(4px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+    filter: blur(0);
+  }
+}
+
+/* Top accent illumination line */
+.cardTopGlow {
+  position: absolute;
+  top: 0;
+  left: 8%;
+  right: 8%;
+  height: 2px;
+  background: linear-gradient(90deg, transparent 0%, var(--accent-bright, #c084fc) 50%, transparent 100%);
+  opacity: 0.7;
+  filter: drop-shadow(0 0 6px var(--accent-bright, #c084fc));
+  transition: opacity 300ms ease, height 300ms ease, left 300ms ease, right 300ms ease;
+  pointer-events: none;
+  z-index: 2;
+}
+
+/* Ambient radial glow inside card */
+.card::before {
+  position: absolute;
+  z-index: 0;
+  inset: 0;
+  content: '';
+  background:
+    radial-gradient(ellipse 65% 55% at 50% 28%, var(--accent-glow, rgba(168, 85, 247, 0.16)), transparent 70%),
+    radial-gradient(circle at 85% 90%, rgba(255, 255, 255, 0.03), transparent 45%);
+  opacity: 0.7;
+  pointer-events: none;
+  transition: opacity 320ms ease, transform 320ms ease;
+}
+
+/* Glossy light streak shimmer on hover */
+.card::after {
+  position: absolute;
+  z-index: 1;
+  inset: -50%;
+  content: '';
+  background: linear-gradient(
+    115deg,
+    transparent 35%,
+    rgba(255, 255, 255, 0.08) 48%,
+    rgba(255, 255, 255, 0.16) 50%,
+    rgba(255, 255, 255, 0.08) 52%,
+    transparent 65%
+  );
+  transform: translateX(-130%) translateY(-30%) rotate(20deg);
+  transition: transform 750ms cubic-bezier(0.16, 1, 0.3, 1);
+  pointer-events: none;
+}
+
+/* Ensure contents stay above pseudo-elements */
+.card > * {
+  position: relative;
+  z-index: 2;
+}
+
+/* Hover dynamics */
+.card:hover {
+  transform: translateY(-7px) scale(1.015);
+  border-color: var(--accent-border-hover, rgba(192, 132, 252, 0.75));
+  box-shadow:
+    0 22px 46px -8px var(--card-shadow, rgba(147, 51, 234, 0.36)),
+    0 0 20px -2px var(--accent-glow, rgba(168, 85, 247, 0.2)),
+    inset 0 1px 1px rgba(255, 255, 255, 0.14);
+}
+
+.card:hover::before {
+  opacity: 1;
+  transform: scale(1.08);
+}
+
+.card:hover::after {
+  transform: translateX(130%) translateY(30%) rotate(20deg);
+}
+
+.card:hover .cardTopGlow {
+  opacity: 1;
+  height: 2.5px;
+  left: 2%;
+  right: 2%;
+}
+
+/* ==========================================================================
+   COLOR SCHEMES: Rich Multi-Layer Aesthetics
+   ========================================================================== */
+
+/* 1. Purple Theme (Standard / Daily) */
+.cardPurple {
+  --accent-color: #c084fc;
+  --accent-bright: #e879f9;
+  --accent-glow: rgba(168, 85, 247, 0.25);
+  --accent-border-hover: rgba(192, 132, 252, 0.75);
+  --card-shadow: rgba(147, 51, 234, 0.36);
+  border-color: rgba(192, 132, 252, 0.32);
+  background:
+    radial-gradient(130% 90% at 50% -20%, rgba(168, 85, 247, 0.26) 0%, rgba(112, 26, 117, 0.1) 45%, transparent 75%),
+    linear-gradient(165deg, rgba(29, 15, 54, 0.96) 0%, rgba(18, 9, 36, 0.98) 50%, rgba(11, 5, 24, 0.99) 100%);
+}
+
+/* 2. Blue Theme (Popular / Reward) */
+.cardBlue {
+  --accent-color: #60a5fa;
+  --accent-bright: #38bdf8;
+  --accent-glow: rgba(59, 130, 246, 0.25);
+  --accent-border-hover: rgba(96, 165, 250, 0.75);
+  --card-shadow: rgba(37, 99, 235, 0.36);
+  border-color: rgba(96, 165, 250, 0.32);
+  background:
+    radial-gradient(130% 90% at 50% -20%, rgba(59, 130, 246, 0.26) 0%, rgba(30, 58, 138, 0.1) 45%, transparent 75%),
+    linear-gradient(165deg, rgba(12, 30, 62, 0.96) 0%, rgba(7, 20, 44, 0.98) 50%, rgba(4, 12, 28, 0.99) 100%);
+}
+
+/* 3. Green Theme (Value / Elite) */
+.cardGreen {
+  --accent-color: #34d399;
+  --accent-bright: #6ee7b7;
+  --accent-glow: rgba(16, 185, 129, 0.25);
+  --accent-border-hover: rgba(52, 211, 153, 0.75);
+  --card-shadow: rgba(16, 185, 129, 0.36);
+  border-color: rgba(52, 211, 153, 0.32);
+  background:
+    radial-gradient(130% 90% at 50% -20%, rgba(16, 185, 129, 0.26) 0%, rgba(6, 78, 59, 0.1) 45%, transparent 75%),
+    linear-gradient(165deg, rgba(10, 36, 28, 0.96) 0%, rgba(6, 24, 18, 0.98) 50%, rgba(3, 15, 11, 0.99) 100%);
+}
+
+/* 4. Amber Theme (Premium / Best Value) */
+.cardAmber {
+  --accent-color: #fbbf24;
+  --accent-bright: #fde047;
+  --accent-glow: rgba(245, 158, 11, 0.3);
+  --accent-border-hover: rgba(251, 191, 36, 0.8);
+  --card-shadow: rgba(217, 119, 6, 0.38);
+  border-color: rgba(251, 191, 36, 0.35);
+  background:
+    radial-gradient(130% 90% at 50% -20%, rgba(245, 158, 11, 0.28) 0%, rgba(146, 64, 14, 0.1) 45%, transparent 75%),
+    linear-gradient(165deg, rgba(38, 24, 8, 0.96) 0%, rgba(24, 15, 5, 0.98) 50%, rgba(14, 9, 2, 0.99) 100%);
+}
+
+/* ==========================================================================
+   CARD TOP ROW & BADGES
+   ========================================================================== */
+
+.cardTop {
+  display: flex;
+  min-height: 38px;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.4rem;
+  padding: 0.75rem 0.85rem 0.2rem;
+}
+
+.badge,
+.ratePill {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.28rem;
+  border-radius: 999px;
+  font-size: 0.62rem;
+  font-weight: 800;
+  line-height: 1;
+  white-space: nowrap;
+  letter-spacing: 0.03em;
+  transition: transform 200ms ease, box-shadow 200ms ease;
+}
+
+.badge {
+  padding: 0.32rem 0.65rem;
+  background: linear-gradient(135deg, #a855f7, #7c3aed);
+  color: #ffffff;
+  box-shadow: 0 3px 10px rgba(168, 85, 247, 0.35);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.badgeValue {
+  background: linear-gradient(135deg, #f59e0b, #d97706);
+  color: #1a0f02;
+  font-weight: 850;
+  box-shadow: 0 3px 12px rgba(245, 158, 11, 0.4);
+  border: 1px solid rgba(254, 240, 138, 0.4);
+}
+
+.cardBlue .badge {
+  background: linear-gradient(135deg, #3b82f6, #0284c7);
+  box-shadow: 0 3px 10px rgba(59, 130, 246, 0.35);
+}
+
+.cardGreen .badge {
+  background: linear-gradient(135deg, #10b981, #0d9488);
+  box-shadow: 0 3px 10px rgba(16, 185, 129, 0.35);
+}
+
+.ratePill {
+  padding: 0.3rem 0.55rem;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  background: rgba(255, 255, 255, 0.06);
+  color: #e2e8f0;
+  backdrop-filter: blur(8px);
+}
+
+.ratePill svg {
+  color: var(--accent-bright, #c084fc);
+}
+
+.card:hover .badge {
+  transform: translateY(-1px) scale(1.03);
+}
+
+.card:hover .ratePill {
+  border-color: var(--accent-color, rgba(192, 132, 252, 0.4));
+  color: #fff;
+  background: rgba(255, 255, 255, 0.1);
+}
+
+/* ==========================================================================
+   CONVERSION VISUAL: Gem -> Arrow -> VE Coin
+   ========================================================================== */
+
+.conversionVisual {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.75rem;
+  padding: 0.65rem 0.75rem 0.45rem;
+  position: relative;
+}
+
+.gemVisual,
+.veVisual {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  transition: transform 320ms cubic-bezier(0.16, 1, 0.3, 1), filter 320ms ease;
+}
+
+.card:hover .gemVisual {
+  transform: translateY(-4px) scale(1.1);
+  filter: drop-shadow(0 0 14px var(--accent-glow, rgba(168, 85, 247, 0.6)));
+}
+
+.card:hover .veVisual {
+  transform: translateY(-4px) scale(1.1);
+  filter: drop-shadow(0 0 14px rgba(245, 158, 11, 0.6));
+}
+
+.arrowVisual {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.15rem;
+  color: var(--accent-color, #c084fc);
+  transition: transform 260ms ease, color 260ms ease;
+}
+
+.arrowVisual svg {
+  transition: transform 260ms cubic-bezier(0.16, 1, 0.3, 1);
+  filter: drop-shadow(0 0 4px currentColor);
+}
+
+.card:hover .arrowVisual svg {
+  transform: translateX(4px);
+}
+
+.arrowVisual span {
+  color: #a1a1aa;
+  font-size: 0.52rem;
+  font-weight: 850;
+  letter-spacing: 0.1em;
+  transition: color 200ms ease;
+}
+
+.card:hover .arrowVisual span {
+  color: var(--accent-bright, #e879f9);
+}
+
+/* ==========================================================================
+   CARD TITLES & STATUS PILL
+   ========================================================================== */
+
+.cardTypeName {
+  margin: 0.2rem 0 0;
+  padding: 0 0.6rem;
+  color: #94a3b8;
+  font-size: 0.67rem;
+  font-weight: 750;
+  letter-spacing: 0.09em;
+  text-align: center;
+  text-transform: uppercase;
+  transition: color 220ms ease;
+}
+
+.card:hover .cardTypeName {
+  color: #e2e8f0;
+}
+
+/* Status indicator badge (Ready vs Insufficient) */
+.statusRow {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 0.3rem;
+}
+
+.statusReady {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.32rem;
+  padding: 0.18rem 0.5rem;
+  border-radius: 999px;
+  background: rgba(34, 197, 94, 0.12);
+  border: 1px solid rgba(34, 197, 94, 0.28);
+  color: #4ade80;
+  font-size: 0.56rem;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+}
+
+.statusLocked {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.28rem;
+  padding: 0.18rem 0.5rem;
+  border-radius: 999px;
+  background: rgba(239, 68, 68, 0.1);
+  border: 1px solid rgba(239, 68, 68, 0.22);
+  color: #fca5a5;
+  font-size: 0.56rem;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+}
+
+/* Pulsing live dot */
+.pulseDot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: #22c55e;
+  box-shadow: 0 0 8px #22c55e;
+  animation: pulseDotAnim 2s infinite ease-in-out;
+}
+
+@keyframes pulseDotAnim {
+  0%, 100% { transform: scale(0.9); opacity: 0.7; }
+  50% { transform: scale(1.25); opacity: 1; }
+}
+
+/* ==========================================================================
+   AMOUNTS DISPLAY
+   ========================================================================== */
+
+.conversionAmounts {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.55rem;
+  margin: 0.65rem 0 0.35rem;
+}
+
+.amountValue {
+  color: #e9d5ff;
+  font-size: 1.38rem;
+  font-weight: 850;
+  letter-spacing: -0.04em;
+  white-space: nowrap;
+  line-height: 1;
+  transition: transform 200ms ease;
+}
+
+.amountValue span {
+  color: #c4b5fd;
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0;
+  margin-left: 0.15rem;
+}
+
+.receiveValue {
+  color: #fde047;
+  text-shadow: 0 0 16px rgba(250, 204, 21, 0.35);
+}
+
+.receiveValue span {
+  color: #fef08a;
+}
+
+.cardBlue .amountValue { color: #bfdbfe; }
+.cardBlue .amountValue span { color: #93c5fd; }
+.cardBlue .receiveValue { color: #fde047; }
+
+.cardGreen .amountValue { color: #a7f3d0; }
+.cardGreen .amountValue span { color: #6ee7b7; }
+
+.cardAmber .amountValue { color: #fef08a; }
+.cardAmber .amountValue span { color: #fde047; }
+
+.amountArrow {
+  flex: none;
+  color: #71717a;
+  transform: rotate(90deg);
+  transition: transform 220ms ease, color 220ms ease;
+}
+
+.card:hover .amountArrow {
+  color: #cbd5e1;
+  transform: rotate(90deg) scale(1.15);
+}
+
+.cardDescription {
+  min-height: 2.2rem;
+  margin: 0.2rem 0.8rem 0.6rem;
+  color: #94a3b8;
+  font-size: 0.64rem;
+  line-height: 1.45;
+  text-align: center;
+}
+
+/* ==========================================================================
+   PROGRESS BAR: Usability enhancer for locked / insufficient cards
+   ========================================================================== */
+
+.progressWrapper {
+  margin: 0 0.8rem 0.65rem;
+  padding: 0.4rem 0.55rem;
+  border-radius: 0.6rem;
+  background: rgba(0, 0, 0, 0.24);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.progressLabelRow {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 0.25rem;
+  font-size: 0.56rem;
+  font-weight: 700;
+  color: #a1a1aa;
+}
+
+.progressPercent {
+  color: var(--accent-bright, #c084fc);
+  font-weight: 800;
+}
+
+.progressTrack {
+  width: 100%;
+  height: 5px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.08);
+  overflow: hidden;
+  position: relative;
+}
+
+.progressFill {
+  height: 100%;
+  border-radius: 999px;
+  background: linear-gradient(90deg, var(--accent-color, #c084fc), var(--accent-bright, #e879f9));
+  box-shadow: 0 0 8px var(--accent-glow, rgba(168, 85, 247, 0.5));
+  transition: width 600ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* ==========================================================================
+   ACTION BUTTON AREA
+   ========================================================================== */
+
+.cardActionArea {
+  margin-top: auto;
+  padding: 0 0.8rem 0.8rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+}
+
+.convertBtn {
+  display: flex;
+  width: 100%;
+  min-height: 2.5rem;
+  align-items: center;
+  justify-content: center;
+  gap: 0.45rem;
+  padding: 0.55rem 0.75rem;
+  border: 0;
+  border-radius: 0.7rem;
+  color: #ffffff;
+  font: inherit;
+  font-size: 0.72rem;
+  font-weight: 800;
+  cursor: pointer;
+  letter-spacing: 0.02em;
+  transition:
+    transform 200ms cubic-bezier(0.16, 1, 0.3, 1),
+    filter 200ms ease,
+    box-shadow 240ms ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.convertBtn svg {
+  transition: transform 200ms ease;
+}
+
+.convertBtn:hover:not(:disabled) {
+  filter: brightness(1.16);
+  transform: translateY(-2px);
+}
+
+.convertBtn:hover:not(:disabled) svg {
+  transform: scale(1.15);
+}
+
+.convertBtn:active:not(:disabled) {
+  transform: translateY(0) scale(0.97);
+}
+
+.convertBtn:focus-visible {
+  outline: 2px solid #fef08a;
+  outline-offset: 3px;
+}
+
+/* Button Themes */
+.convertBtnPurple {
+  background: linear-gradient(135deg, #a855f7 0%, #7c3aed 100%);
+  box-shadow: 0 4px 14px rgba(124, 58, 237, 0.35);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+}
+.convertBtnPurple:hover:not(:disabled) {
+  box-shadow: 0 6px 20px rgba(124, 58, 237, 0.55);
+}
+
+.convertBtnBlue {
+  background: linear-gradient(135deg, #3b82f6 0%, #0284c7 100%);
+  box-shadow: 0 4px 14px rgba(37, 99, 235, 0.35);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+}
+.convertBtnBlue:hover:not(:disabled) {
+  box-shadow: 0 6px 20px rgba(37, 99, 235, 0.55);
+}
+
+.convertBtnGreen {
+  background: linear-gradient(135deg, #10b981 0%, #0d9488 100%);
+  box-shadow: 0 4px 14px rgba(16, 185, 129, 0.35);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+}
+.convertBtnGreen:hover:not(:disabled) {
+  box-shadow: 0 6px 20px rgba(16, 185, 129, 0.55);
+}
+
+.convertBtnAmber {
+  background: linear-gradient(135deg, #f59e0b 0%, #d97706 100%);
+  box-shadow: 0 4px 14px rgba(245, 158, 11, 0.35);
+  border: 1px solid rgba(254, 240, 138, 0.3);
+  color: #1a0f02;
+  font-weight: 850;
+}
+.convertBtnAmber:hover:not(:disabled) {
+  box-shadow: 0 6px 20px rgba(245, 158, 11, 0.55);
+}
+
+/* Insufficient Gems Shortcut Button (Very user-friendly!) */
+.convertBtnEarnMore {
+  background: rgba(39, 39, 42, 0.7);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  color: #e4e4e7;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+  cursor: pointer;
+}
+
+.convertBtnEarnMore:hover {
+  background: rgba(63, 63, 70, 0.85);
+  border-color: var(--accent-color, rgba(168, 85, 247, 0.45));
+  color: #fff;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.4);
+}
+
+.lockedWarning {
+  margin: 0;
+  color: #cbd5e1;
+  font-size: 0.6rem;
+  text-align: center;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.3rem;
+}
+
+.lockedWarning span {
+  color: var(--accent-bright, #c084fc);
+  font-weight: 750;
+}
+
+/* ==========================================================================
+   RESPONSIVE & ACCESSIBILITY
+   ========================================================================== */
+
+@media (max-width: 1050px) {
+  .cardTop { padding-right: 0.65rem; padding-left: 0.65rem; }
+  .badge, .ratePill { font-size: 0.56rem; }
+  .amountValue { font-size: 1.18rem; }
+  .conversionVisual { gap: 0.45rem; }
+}
+
+@media (max-width: 850px) {
+  .cardTypeName { font-size: 0.72rem; }
+  .amountValue { font-size: 1.3rem; }
+  .cardTop { padding-right: 0.75rem; padding-left: 0.75rem; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .card, .card::before, .card::after, .gemVisual, .veVisual, .arrowVisual svg, .convertBtn, .progressFill, .pulseDot {
+    animation: none;
+    transition: none;
+  }
+
+  .card:hover,
+  .card:hover .gemVisual,
+  .card:hover .veVisual,
+  .card:hover .arrowVisual svg,
+  .convertBtn:hover:not(:disabled),
+  .convertBtn:active:not(:disabled) {
+    transform: none;
+  }
+}

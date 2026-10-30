@@ -1,0 +1,177 @@
+.exchangeCenterWrapper {
+  position: relative;
+  display: flex;
+  min-height: 100vh;
+  flex-direction: column;
+  overflow-x: hidden;
+  background:
+    radial-gradient(ellipse at 72% 0%, rgba(70, 36, 113, 0.12), transparent 38rem),
+    #090814;
+  color: #f8fafc;
+}
+
+.mainLayout {
+  position: relative;
+  display: flex;
+  flex: 1;
+}
+
+.contentArea {
+  width: 100%;
+  max-width: 1040px;
+  flex: 1;
+  margin: 0 auto;
+  padding: 1rem 1.1rem 3rem;
+}
+
+.sectionHeader {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 1rem;
+  margin: 0 0 0.85rem;
+}
+
+.sectionTitleGroup {
+  display: flex;
+  flex-direction: column;
+  gap: 0.22rem;
+}
+
+.sectionBadge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.26rem 0.65rem;
+  border-radius: 999px;
+  background: rgba(168, 85, 247, 0.12);
+  border: 1px solid rgba(168, 85, 247, 0.28);
+  color: #d8b4fe;
+  font-size: 0.64rem;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  width: fit-content;
+}
+
+.sectionBadge svg {
+  color: #c084fc;
+  filter: drop-shadow(0 0 6px rgba(168, 85, 247, 0.6));
+}
+
+.sectionHeading {
+  color: #fff;
+  font-size: 1.35rem;
+  font-weight: 850;
+  letter-spacing: -0.03em;
+  line-height: 1.2;
+}
+
+.sectionSubheading {
+  color: #94a3b8;
+  font-size: 0.72rem;
+  line-height: 1.45;
+}
+
+.sectionActions {
+  display: flex;
+  flex: none;
+  align-items: center;
+  gap: 0.65rem;
+}
+
+.rateInfoButton {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  padding: 0.4rem 0.85rem;
+  border: 1px solid rgba(168, 85, 247, 0.3);
+  border-radius: 999px;
+  background: rgba(168, 85, 247, 0.08);
+  color: #d8b4fe;
+  font-size: 0.68rem;
+  font-weight: 750;
+  cursor: pointer;
+  transition: all 200ms ease;
+  backdrop-filter: blur(8px);
+}
+
+.rateInfoButton:hover {
+  color: #ffffff;
+  border-color: rgba(192, 132, 252, 0.6);
+  background: rgba(168, 85, 247, 0.22);
+  transform: translateY(-1px);
+  box-shadow: 0 4px 14px rgba(147, 51, 234, 0.25);
+}
+
+.rateInfoButton:focus-visible {
+  outline: 2px solid #d8bb7a;
+  outline-offset: 3px;
+  border-radius: 999px;
+}
+
+.cardsGrid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 0.75rem;
+  margin-bottom: 1.1rem;
+}
+
+.bottomGrid {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr) minmax(0, 1fr);
+  align-items: stretch;
+  gap: 0.75rem;
+  padding-bottom: 1.5rem;
+}
+
+@media (min-width: 768px) {
+  .contentArea {
+    padding: 1.25rem 1.4rem 3rem;
+  }
+}
+
+@media (min-width: 1200px) {
+  .contentArea {
+    padding: 1.4rem 1.6rem 3.5rem;
+  }
+}
+
+@media (max-width: 1050px) {
+  .cardsGrid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .bottomGrid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 760px) {
+  .sectionHeader {
+    align-items: flex-start;
+  }
+}
+
+@media (max-width: 600px) {
+  .sectionHeader {
+    flex-direction: column;
+    gap: 0.35rem;
+  }
+
+  .cardsGrid,
+  .bottomGrid {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .sectionActions {
+    align-self: flex-end;
+  }
+}
+
+@media (max-width: 430px) {
+  .contentArea {
+    padding-right: 0.8rem;
+    padding-left: 0.8rem;
+  }
+}

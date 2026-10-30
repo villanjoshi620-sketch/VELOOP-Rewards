@@ -1,0 +1,65 @@
+.emptyContainer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  width: 100%;
+  margin: 0 0 1.5rem;
+  padding: 3rem 1.5rem;
+  border: 1px dashed rgba(192, 164, 225, 0.28);
+  border-radius: 1.2rem;
+  background: linear-gradient(145deg, rgba(34, 36, 56, 0.8), rgba(27, 29, 46, 0.8));
+  text-align: center;
+}
+
+.emojiIcon {
+  display: grid;
+  width: 3.7rem;
+  height: 3.7rem;
+  margin-bottom: 1rem;
+  place-items: center;
+  border: 1px solid rgba(191, 159, 240, 0.22);
+  border-radius: 1rem;
+  background: rgba(130, 91, 184, 0.14);
+  color: #cbb3fa;
+}
+
+.emptyTitle {
+  margin: 0 0 0.45rem;
+  color: #fff;
+  font-size: 1.15rem;
+  font-weight: 700;
+}
+
+.emptyText {
+  max-width: 420px;
+  margin: 0 0 1.2rem;
+  color: #aeb1c1;
+  font-size: 0.85rem;
+  line-height: 1.55;
+}
+
+.refreshBtn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.65rem 1rem;
+  border: 1px solid rgba(214, 193, 239, 0.28);
+  border-radius: 0.7rem;
+  background: rgba(255, 255, 255, 0.05);
+  color: #e0d1f5;
+  font-size: 0.78rem;
+  font-weight: 650;
+  cursor: pointer;
+  transition: background 160ms ease, border-color 160ms ease;
+}
+
+.refreshBtn:hover {
+  border-color: rgba(214, 193, 239, 0.56);
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.refreshBtn:focus-visible {
+  outline: 2px solid #d8bb7a;
+  outline-offset: 3px;
+}
